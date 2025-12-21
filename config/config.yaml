@@ -1,0 +1,44 @@
+app:
+  port: 8083
+database:
+  driver: mysql
+  source: 139.196.168.236
+  port: 3306
+  user: woodInspection
+  pass: FEFGkbx5BeR4KM4t
+  name: woodInspection
+
+jwt:
+  secret: "your-super-secret-jwt-key-change-this-in-production"
+  issuer: "woodInspection-go"
+
+# 木材检测 API 配置
+wood_detection:
+  # API 服务器地址
+  base_url: "https://sherell-burnishable-nonnattily.ngrok-free.dev"
+  # API 密钥（需要与 api_server.py 中的 API_KEY 一致）
+  api_key: "test-key-123"
+  # 请求超时时间（秒）
+  timeout: 30
+  # 最大重试次数
+  max_retries: 3
+  # 重试间隔（秒）
+  retry_interval: 1
+
+# 服务器配置
+server:
+  # 监听地址
+  host: "139.196.168.236"
+  # 监听端口
+  port: 8083
+  # 读取超时（秒）
+  read_timeout: 30
+  # 写入超时（秒）
+  write_timeout: 30
+
+# 日志配置
+log:
+  level: "info"  # debug, info, warn, error
+  format: "json"  # json, text
+#当前模型以 FastAPI 形式部署，并通过 ngrok 暴露为公网接口，
+#使用方式与调用大模型（如 DeepSeek）一致，采用 Base-URL + API Key 的方式访问。
